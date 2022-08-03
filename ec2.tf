@@ -7,7 +7,7 @@ resource "aws_instance" "web" {
     Name = "NGINX"
   }
   vpc_security_group_ids = ["${aws_security_group.nginx.id}"]
-  subnet_id = aws_subnet.comento-private-c.id
+  subnet_id              = aws_subnet.comento-private-c.id
 
   iam_instance_profile = aws_iam_instance_profile.ssm.name
 }
@@ -18,11 +18,11 @@ resource "aws_security_group" "nginx" {
   vpc_id      = aws_vpc.vpc.id
 
   ingress {
-    description      = "TLS from VPC"
-    from_port        = 80
-    to_port          = 80
-    protocol         = "tcp"
-    cidr_blocks      = [aws_vpc.vpc.cidr_block]
+    description = "TLS from VPC"
+    from_port   = 80
+    to_port     = 80
+    protocol    = "tcp"
+    cidr_blocks = [aws_vpc.vpc.cidr_block]
   }
 
   egress {
